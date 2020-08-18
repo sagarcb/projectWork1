@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="finalProject1@localhost" uuid="2404df90-c16b-4638-b493-bbb4918fbb0c">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/finalProject1</jdbc-url>
+      <driver-properties>
+        <property name="createDatabaseIfNotExist" value="TRUE" />
+      </driver-properties>
+    </data-source>
+  </component>
+</project>

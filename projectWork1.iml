@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/finalProject/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/finalProject/tests" isTestSource="true" packagePrefix="Tests\" />
+      <excludeFolder url="file://$MODULE_DIR$/finalProject/vendor/league/mime-type-detection" />
+      <excludeFolder url="file://$MODULE_DIR$/finalProject/vendor/maatwebsite/excel" />
+      <excludeFolder url="file://$MODULE_DIR$/finalProject/vendor/maennchen/zipstream-php" />
+      <excludeFolder url="file://$MODULE_DIR$/finalProject/vendor/markbaker/complex" />
+      <excludeFolder url="file://$MODULE_DIR$/finalProject/vendor/markbaker/matrix" />
+      <excludeFolder url="file://$MODULE_DIR$/finalProject/vendor/myclabs/php-enum" />
+      <excludeFolder url="file://$MODULE_DIR$/finalProject/vendor/phpoffice/phpspreadsheet" />
+      <excludeFolder url="file://$MODULE_DIR$/finalProject/vendor/psr/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/finalProject/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/finalProject/vendor/voku/portable-ascii" />
+      <excludeFolder url="file://$MODULE_DIR$/finalProject/vendor/webmozart/assert" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
