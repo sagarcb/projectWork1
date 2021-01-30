@@ -35,11 +35,16 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">Login</button>
                 </div>
+                <div class="form-group">
+                    @if (Session::has('error'))
+                        <p style="color: red">{{Session('error')}}</p>
+                    @endif
+                </div>
             </form>
         </div>
 
         <div>
-            <a style="color: white; margin-left: 10px; margin-right: 10px;" href="#">TeacherLogin</a>
+            <a style="color: white; margin-left: 10px; margin-right: 10px;" href="{{url('/teacher/login')}}">TeacherLogin</a>
             <a style="color: white; margin-left: 10px; margin-right: 10px;" href="{{url('/adminlogin')}}">AdminLogin</a>
             <a style="color: white; margin-left: 10px; margin-right: 10px" href="{{url("/superadminlogin")}}">SuperAdminLogin</a>
         </div>

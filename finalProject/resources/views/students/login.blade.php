@@ -16,27 +16,39 @@
 
 <div class="container" style="margin-bottom: 20px;">
     <div class="logo">
-        <img src="images/logo.png" alt="State University Logo">
+        <img src="{{url('images/logo.png')}}" alt="State University Logo">
         <p><b>State University Of Bangladesh</b></p>
 
         <div class="login-form">
-            <form action="/examples/actions/confirmation.php" method="post">
+            <div class="row">
+                <div class="col-md-12 text-light">
+                    <h2>Student Login</h2>
+                </div>
+            </div>
+            <form action="{{url('/student')}}" method="post">
+                @csrf
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Username" required="required">
+                    <input type="text" name="studentid" class="form-control" placeholder="Student id" required="required" value="{{old('studentid')}}">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="required">
+                    <input type="password" name="password" class="form-control" placeholder="Password" required="required">
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"><a style="color: white; text-decoration: none;" href="{{url('/student')}}">Login</a></button>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </div>
+                <div class="form-group">
+                    @if (Session::has('error'))
+                        <p style="color: red">{{Session('error')}}</p>
+                    @endif
+
                 </div>
             </form>
         </div>
 
         <div>
-        <a style="color: white; margin-left: 10px; margin-right: 10px;" href="#">TeacherLogin</a>
-        <a style="color: white; margin-left: 10px; margin-right: 10px;" href="{{url('/adminlogin')}}">AdminLogin</a>
-        <a style="color: white; margin-left: 10px; margin-right: 10px" href="{{url("/superadminlogin")}}">SuperAdminLogin</a>
+            <a style="color: white; margin-left: 10px; margin-right: 10px;" href="{{url('/teacher/login')}}">TeacherLogin</a>
+            <a style="color: white; margin-left: 10px; margin-right: 10px;" href="{{url('/adminlogin')}}">AdminLogin</a>
+            <a style="color: white; margin-left: 10px; margin-right: 10px" href="{{url("/superadminlogin")}}">SuperAdminLogin</a>
         </div>
 
     </div>

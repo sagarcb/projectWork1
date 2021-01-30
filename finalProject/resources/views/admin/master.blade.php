@@ -8,6 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <title>Admin Panel</title>
 
@@ -18,25 +19,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/adminstyle">
+    <link rel="stylesheet" href="{{url("")}}/css/adminstyle.css">
 
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
 
-        td, th {
-            border: 1px solid black;
-            text-align: left;
-            padding: 8px;
-        }
 
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
+    {{--Toggle Switch cdn links--}}
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -51,9 +42,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
         </ul>
 
-        <ul class="navbar-nav text-dark ml-auto">
-            <li><span><h1>Welcome to Admin Dashboard</h1></span></li>
+        <ul style="list-style: none" class="text-dark ml-auto">
+            <li><span><h3>Welcome to Admin Dashboard</h3></span></li>
+            <li>
+                <ul style="list-style: none;" class="navbar-nav text-dark ml-auto justify-content-center">
+                    <li>Current Year: {{session('activeYear')}}||</li>
+                    <li>Current Semester: {{session('activeSemester')}}</li>
+                </ul>
+            </li>
         </ul>
+
+
+
+
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
@@ -61,6 +62,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a class="nav-link" href="{{url('/admin/logout')}}">Logout</a>
             </li>
         </ul>
+
     </nav>
     <!-- /.navbar -->
 
@@ -99,7 +101,80 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li class="nav-item">
                                 <a href="{{url("/admin/students")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Student list</p>
+                                    <p>Students list</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url("/admin/teachers")}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Teachers list</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url("/admin/courses")}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Course list</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url("/admin/course-registration-list")}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Student Course Registration List</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url("/admin/evaluationreport")}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Course Evaluation Report</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url("/admin/allevaluationreport")}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Evaluation Report</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url("admin/teacher-select-course")}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Teacher courses report</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+                    <li class="nav-item has-treeview menu-open">
+                        <a href="#" class="nav-link active">
+                            <p>
+                                Question Information
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url("/admin/mcqqlist")}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>MCQ List</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url("/admin/openendedqlist")}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Open Ended Question List</p>
                                 </a>
                             </li>
                         </ul>
@@ -142,10 +217,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
+
 <script src="{{url("")}}/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="{{url("")}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{url("")}}/dist/js/adminlte.min.js"></script>
+
+<script src="{{url("")}}/js/questionDesign.js"></script>
+{{--Toggle Switch Script--}}
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 </body>
 </html>

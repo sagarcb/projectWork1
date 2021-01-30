@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-4"><span></span></div>
-                    <div class="col-md-4"><h3>Add new Students</h3></div>
+                    <div class="col-md-4"><h3 class="text-center">Add new Student</h3></div>
                     <div class="col-md-4"><span></span></div>
                 </div>
                 <div class="row">
@@ -32,17 +32,8 @@
                                     <input type="text" name="sid" class="form-control" placeholder="Student id">
                                 </div>
                                 <div class="col">
-                                        <label for="inputDeptCode">Dept. Code</label>
-                                        <select id="inputDeptCode" name="deptcode" class="form-control">
-                                            <option value="null" selected>Choose...</option>
-                                            <option value="cse">CSE</option>
-                                            <option value="law">Law</option>
-                                            <option value="phm">Pharmacy</option>
-                                            <option value="arch">Architecture</option>
-                                            <option value="eng">English</option>
-                                            <option value="bba">BBA</option>
-                                            <option value="food">Food & Nutrition</option>
-                                        </select>
+                                    <label for="inputDeptCode">Dept. Code</label>
+                                    <input type="text" id="inputDeptCode" name="deptcode" class="form-control" value="{{session('empDeptcode')}}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">

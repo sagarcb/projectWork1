@@ -17,7 +17,7 @@ class CreateAdmininfosTable extends Migration
             $table->string('empid',20)->primary();
             $table->string('emppw');
             $table->string('empname',50);
-            $table->string('deptcode',5);
+            $table->string('deptcode',10);
             $table->boolean('empactivitystatus')->default(0);
             $table->timestamps();
         });

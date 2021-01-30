@@ -1,176 +1,162 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    @include('students.common.head')
+    <title>Student Home Page</title>
 
-    <link rel="stylesheet" href="{{url('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{url('css/studenthome.css')}}">
-    <link rel="stylesheet" href="{{url("css/footer.css")}}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{url("")}}/css/studenthome1.css">
+
+    <script src="{{url("")}}/js/jquery-3.4.1.slim.min.js"></script>
 </head>
 <body>
-@include('common.navbar')<!--Navbar Section-->
+{{--Head Navbar Section Starts--}}
+@include('students/common/navbar');
+{{--Head Navbar Section ends--}}
 
-<div class="container"> <!--container classs starts-->
-<div class="studentinfo"> <!--studentinfo classs starts-->
 
-    <h4 style="color: white; padding-top: 10px; text-align: center;"><b>Teaching Evaluation</b></h4>
-    <hr style="color: white; background-color: white; height: 3px;">
+{{--Main Contentes Starts--}}
 
-        <div class="row"> <!--row classs starts-->
-            <div class="col-md-12"> <!--col-md-12 classs starts-->
-                <form action="" method="get">
-                    <label style="padding-left: 20px">Program: <input type="text" name="program" value="" readonly></label>
-                    <label id="date">Date: <input type="text" name="date" value="" readonly></label><br/><br/>
-                    <label id="studentid">Student ID: <input type="text" name="studentid" value="" readonly></label><br/>
-                    <label id="studentname">Student Name: <input type="text" name="studentname" value="" readonly></label>
-                </form>
-            </div> <!--col-md-12 classs ends-->
-        </div> <!--row classs ends-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-lg-12" id="main-contents">
 
-        <!--Dropdown menu starts-->
-        <div class="row justify-content-md-center"> <!--row justify-content-md-center class starts-->
+            {{--Page Heading Starts--}}
+            <div class="col-md-12" id="page-heading">
+                <h2 class="header text-center">Welcome {{$student->sname}}</h2>
+                <hr>
+            </div>
+            {{--Page Heading Ends--}}
 
-            <div class="col-md-6">
+            <div class="container">
+                <form class="p-3">
+                    <div class="row" id="studentInfo">
 
-                <div class="row">
+                        <div class="col-md-6">
 
-                    <!--Choose Year dropdown menu starts-->
-                    <div class="col-md-6">
-                        <div class="dropdown">
-                            <label style="text-align: center;">Choose Year:</label><br/>
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-                                ------------------
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">2020</a>
-                                <a class="dropdown-item" href="#">2019</a>
-                                <a class="dropdown-item" href="#">2018</a>
+                            <div class="form-group row">
+                                <label for="program" class="col-sm-3 col-form-label text-white mr-0 pr-0">Department</label>
+                                <div class="col-sm-9 ml-0 pl-0">
+                                    <input type="text" class="form-control" name="program" id="program" value="{{$student->deptcode}}" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="studentId" class="col-sm-3 col-form-label text-white mr-0 pr-0">Student ID</label>
+                                <div class="col-sm-9 ml-0 pl-0">
+                                    <input type="text" class="form-control" name="studentId" id="studentId" value="{{$student->sid}}" readonly>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!--Choose Year dropdown menu ends-->
 
-                    <!--Choose semester dropdown menu starts-->
-                    <div class="col-md-6">
-                        <div class="dropdown">
-                            <label style="text-align: center;">Choose Semester:</label><br/>
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-                                ------------------
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Spring 2020</a>
-                                <a class="dropdown-item" href="#">Fall 2019</a>
-                                <a class="dropdown-item" href="#">Summer 2019</a>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="date" class="col-sm-2 col-form-label mr-0 pr-0 text-white">Date</label>
+                                <div class="col-sm-10 ml-0 pl-0">
+                                    <input type="text" class="form-control" name="date" id="date" value="{{date('d M Y')}}" readonly>
+                                </div>
                             </div>
-                        </div><!--dropdown class ends-->
-                    </div>
-                    <!--Choose semester dropdown menu ends-->
+                            <div class="form-group row">
+                                <label for="studentName" class="col-sm-4 col-form-label mr-0 pr-0 text-white">Student Name</label>
+                                <div class="col-sm-8 ml-0 pl-0">
+                                    <input type="text" style="width: 100%" class="form-control" name="studentName" id="studentName" value="{{$student->sname}}" readonly>
+                                </div>
+                            </div>
+                        </div>
 
+                    </div>
+                </form>
+
+
+                <div class="row">
+                    <div class="col-md-3"><span></span></div>
+                    <div class="col-md-3 col-sm-6 text-center"><span class="text-white">Running Year: 2020</span></div>
+                    <div class="col-md-3 col-sm-6 text-center"><span class="text-white">Running Semester: Summer</span></div>
+                    <div class="col-md-3"><span></span></div>
                 </div>
 
-            </div>
 
-        </div> <!--row justify-content-md-center class ends-->
+                <div class="row">
+                    <div class="col-md-1"><span></span></div>
+                    <div class="col-md-10 text-center">
 
-    <!--Dropdown class ends-->
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">Evaluate</th>
+                                <th scope="col">Course Code</th>
+                                <th scope="col">Lecturer</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($regCourses as $row)
+                                <tr>
+                                    <td><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal{{$row->id}}">Evaluate</button></td>
+                                    <td>{{$row->courseid}}</td>
+                                    <td>{{$row->tname}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        {{--Modal Starts--}}
+                        @foreach($regCourses as $row)
+                        <div class="row justify-content-center">
 
+                            <div class="col-md-6 justify-content-center" id="open-for-evaluate">
 
-    <!--Table Section starts-->
-    <div class="table d-flex justify-content-center">
+                                <div class="modal fade bd-example-modal-sm" id="modal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h5>Evaluation Status</h5>
+                                                    <div class="container">
+                                                        <hr>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    @if($row->openforevaluation == 1 && $row->evaluationstatus == 0)
+                                                        <span>Open for Evaluation</span>
+                                                    @elseif($row->evaluationstatus == 1)
+                                                        <span>Evaluated</span>
+                                                    @else
+                                                        <span>Closed</span>
+                                                    @endif
+                                                </div>
+                                                <div class="col-md-12">
+                                                    @if($row->openforevaluation == 1 && $row->evaluationstatus == 0)
+                                                        <a href="{{route('remindHelper',['courseid'=>$row->courseid,'sid'=>$student->sid])}}"><button class="btn-dark mb-2 mt-2" type="submit">Evaluate</button></a>
+                                                    @else
+                                                        <span></span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-        <table>
-            <tr>
-                <th>Submit Status</th>
-                <th>Course Code</th>
-                <th>Section</th>
-                <th>Teacher Name</th>
-            </tr>
-            <tr>
-                <td><button type="submit" id="submit-status" name="btn-submit-status">Evaluate</button></td>
-                <td>CSE-0419</td>
-                <td>A</td>
-                <td>Jubayer Ahmed</td>
-            </tr>
-            <tr>
-                <td><button type="submit" id="submit-status1" name="btn-submit-status">Evaluate</button></td>
-                <td>CSE-0419</td>
-                <td>A</td>
-                <td>Jubayer Ahmed</td>
-            </tr>
-        </table>
+                        </div>
+                        @endforeach
 
-    </div>
-
-    <div class="row justify-content-center">
-
-        <div class="col-md-6 justify-content-center" id="open-for-evaluate">
-
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <h5>Evaluation Status</h5>
-                        <hr style="height: 3px; background-color: white;">
-                        <p><b>Open for Evaluation</b></p>
-                        <button class="btn btn-secondary" id="evaluated" style="display: ;">Evaluate</button>
                     </div>
+
+                    {{--Modal Ends--}}
+                    <div class="col-md-1"><span></span></div>
                 </div>
+
             </div>
         </div>
-
     </div>
+</div>
 
-    <!--Script for pop up Modal screen starts-->
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("submit-status");
-        var btn1 = document.getElementById("submit-status1");
-
-        // When the user clicks the button, open the modal
-        btn.onclick = function() {
-            modal.style.display = "block";
-            document.getElementById("evaluated").style.display = "";
-            document.getElementsByTagName("p")[0].innerHTML="<b>Open For Evaluation</b>";
-        }
-
-        btn1.onclick = function(){
-            modal.style.display = "block";
-            document.getElementById("evaluated").style.display = "none";
-            document.getElementsByTagName("p")[0].innerHTML="<b>Evaluated</b>";
-
-        }
+{{--Main Contentes Ends--}}
 
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
+{{--Footer section starts--}}
+@include('students/common/footer');
+{{--Footer Section Ends--}}
 
-    <!--Script for pop up Modal screen ends-->
-
-</div><!--studentinfo classs ends-->
-</div><!--container classs ends-->
-
-@include('common.footer')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="{{url('js/bootstrap.min.js')}}"></script>
-<script src="{{url('js/jquery-3.4.1.slim.min.js')}}"></script>
-
+<script src="{{url("")}}/js/bootstrap.min.js"></script>
+<script src="{{url("")}}/js/studenthome1.js"></script>
 </body>
 </html>
-

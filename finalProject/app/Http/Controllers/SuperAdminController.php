@@ -32,7 +32,6 @@ class SuperAdminController extends Controller
 
     public function authenticate(Request $request)
     {
-        //$v = Superadmininfo::all();
         $userid = $request->userid;
         $pass = $request->password;
         $v =  Superadmininfo::where('suadmin', '=', "$userid")->first();
@@ -41,10 +40,10 @@ class SuperAdminController extends Controller
                 session()->put('data',1);
                 return redirect('superadmin');
             }else{
-                return redirect('superadminlogin');
+                return redirect('superadminlogin')->with('error',"*UserId or Password was incorrect");
             }
         }else{
-            return back();
+            return back()->with('error',"*UserId or Password was incorrect");
         }
     }
 
@@ -69,6 +68,8 @@ class SuperAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    //Add admin
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -86,18 +87,25 @@ class SuperAdminController extends Controller
         $data->empname = $request->get('empname');
         $data->deptcode = $request->get('deptcode');
         $data->save();
-        return redirect('/superadmin');
+        return redirect('/superadmin')->with('success',"Successfully Added!!!");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    //For showing the admin password reset form
+    public function showAdminPasswordResetForm($id)
     {
-        //
+        $admin = DB::select( DB::raw("SELECT empname,empid FROM admininfos WHERE empid = '$id'"));
+        return view('superAdmin.adminresetpassword')->with('admin',$admin[0]);
+    }
+
+    //Update new password
+    public function adminPasswordReset($id,Request $request)
+    {
+        $data['emppw'] = $request->emppw;
+        DB::table('admininfos')
+            ->where('empid',$request->$id)
+            ->update($data);
+        return redirect('/superadmin')->with('success','Successfully reset password!!');
     }
 
     /**
@@ -136,7 +144,7 @@ class SuperAdminController extends Controller
             ->where('empid', "$empid")
             ->update($data);
 
-        return redirect('superadmin');
+        return redirect('superadmin')->with('success','Updated successfully!!');
     }
 
     /**
@@ -145,10 +153,11 @@ class SuperAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //destroy admin
     public function destroy($id)
     {
         DB::table('admininfos')->where('empid', "$id")->delete();
-        return redirect('superadmin');
+        return redirect('/superadmin')->with('success','Successfully Deleted!!!');
     }
 
     public function statusUpdate(Request $request)
@@ -170,7 +179,7 @@ class SuperAdminController extends Controller
     public function activeSemesterStore(Request $request, ActiveSemester $sem){
 
         $semester = $request->semester;
-        $dept = $request->deptcode;
+        $dept = $request->dept;
         $year = $request->year;
         if ($semester == 'choose' || $dept == "choose"){
             return back();
@@ -178,7 +187,13 @@ class SuperAdminController extends Controller
            DB::table('active_semesters')
                 ->where('dept', $dept)
                 ->update(['semester' => $semester, 'year' => $year, 'dept' => $dept]);
+            DB::table('active_semesters')
+                ->updateOrInsert(
+                    ['semester' => $semester,'year' => $year,'dept' => $dept]
+                );
+
             return back();
+
         }
     }
 

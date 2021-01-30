@@ -17,16 +17,16 @@ class CreateActiveSemestersTable extends Migration
             $table->id();
             $table->string('semester',10)->nullable();
             $table->string('year',10)->nullable();
-            $table->string('dept',5)->nullable();
+            $table->string('dept',10)->nullable();
             $table->boolean('active_status')->default(1);
             $table->timestamps();
         });
 
-        \App\ActiveSemester::create([
+        /*\App\ActiveSemester::create([
             'semester' => 'spring',
             'dept' => 'cse',
             'year' => '2020'
-        ]);
+        ]);*/
     }
 
     /**

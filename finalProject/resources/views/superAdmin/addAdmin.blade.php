@@ -49,7 +49,7 @@
                                         <div class="form-group col-md-4">
                                             <label for="inputDeptCode">Dept. Code</label>
                                             <select id="inputDeptCode" name="deptcode" class="form-control">
-                                                <option selected value="choose">Choose...</option>
+                                                <option selected value="null">Choose...</option>
                                                 <option value="CSE">CSE</option>
                                                 <option value="Law">Law</option>
                                                 <option value="Pharmacy">Pharmacy</option>

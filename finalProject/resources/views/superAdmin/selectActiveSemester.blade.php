@@ -10,22 +10,27 @@
         <div class="content">
             <div class="row">
                <div class="col-md-12">
+                   <div class="row">
+                       <div class="col-md-12">
+                           <h3 class="text-center">Set Active Year and Semester</h3>
+                       </div>
+                   </div>
                    <div class="form">
                        <form action="{{url('superadmin/selectactivesemester/')}}" method="post">
                            @csrf
                            <div class="row">
                                <div class="col-md-3">
                                    <label for="inputDeptCode">Dept. Code</label>
-                                   <select id="inputDeptCode" name="deptcode" class="form-control">
+                                   <select id="inputDeptCode" name="dept" class="form-control">
                                        <option selected value="choose">Choose...</option>
-                                       <option value="CSE">CSE</option>
-                                       <option value="Law">Law</option>
-                                       <option value="Pharmacy">Pharmacy</option>
-                                       <option value="FET">Food Engineering</option>
-                                       <option value="English">English</option>
-                                       <option value="BBA">BBA</option>
-                                       <option value="Architecture">Architecture</option>
-                                       <option value="JCM">Journalism</option>
+                                       <option value="cse">CSE</option>
+                                       <option value="law">Law</option>
+                                       <option value="Phm">Pharmacy</option>
+                                       <option value="fet">Food Engineering</option>
+                                       <option value="Eng">English</option>
+                                       <option value="bba">BBA</option>
+                                       <option value="arch.">Architecture</option>
+                                       <option value="jcm">Journalism</option>
                                    </select>
                                </div>
                                <div class="col-md-3">
@@ -40,7 +45,7 @@
                                <script>
                                    var a = document.getElementById('inputDeptCode');
                                    a.addEventListener('click',function () {
-                                        if (a.value == 'phm'){
+                                        if (a.value == 'Phm'){
                                             document.getElementById('inputSemester').options['2'].disabled = true;
                                         }
                                    })
@@ -48,8 +53,8 @@
 
 
                                <div class="col-md-3">
-                                   <label for="inputYear">Current Year</label><br/>
-                                   <input type="text" name="year" id="inputYear" readonly value="">
+                                   <label for="inputYear">Current Year</label>
+                                   <input class="form-control" type="text" name="year" id="inputYear" readonly value="">
                                </div>
                                <script>
                                    var d = new Date();

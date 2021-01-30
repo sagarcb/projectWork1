@@ -22,7 +22,7 @@
                 <a class="nav-item nav-link" href="{{url('/student')}}"><b>Home</b></a>
                 <a class="nav-item nav-link" href="#"><b>Registered Courses</b></a>
                 <!--a class="nav-item nav-link" href="{{url('/changePassword')}}"><b>Change Password</b></a>-->
-                <a class="nav-item nav-link" href="{{url('/')}}"><b>Logout</b></a>
+                <a class="nav-item nav-link" href="{{url('/student/logout')}}"><b>Logout</b></a>
             </div>
         </div>
         </div>

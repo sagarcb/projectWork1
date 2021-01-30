@@ -20,17 +20,28 @@ label{
     color: white;
     margin-left: 100px;
 }
+#program1{
+    text-align: center;
+    text-transform: uppercase;
+}
 label#date{
     margin-left: 300px;
 }
+#date1{
+    text-align: center;
+}
 label#studentid{
     margin-left: 106px;
+}
+#studentid1{
+    text-align: center;
 }
 label#studentname{
     margin-left: 79px;
 }
 label#studentname input{
     width: 300px;
+    text-align: center;
 }
 input{
     border-radius: 10px;

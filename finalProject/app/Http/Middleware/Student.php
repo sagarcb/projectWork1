@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Studentinfo;
 use Closure;
 
 class Student
@@ -15,6 +16,10 @@ class Student
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (session()->has('studentloginstatus') == 1){
+            return $next($request);
+        }else{
+            return redirect('student/login');
+        }
     }
 }

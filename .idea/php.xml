@@ -112,6 +112,13 @@
       <path value="$PROJECT_DIR$/finalProject/vendor/maennchen/zipstream-php" />
       <path value="$PROJECT_DIR$/finalProject/vendor/phpoffice/phpspreadsheet" />
       <path value="$PROJECT_DIR$/finalProject/vendor/maatwebsite/excel" />
+      <path value="$PROJECT_DIR$/finalProject/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/finalProject/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/finalProject/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/finalProject/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/finalProject/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/finalProject/vendor/setasign/fpdi" />
+      <path value="$PROJECT_DIR$/finalProject/vendor/mpdf/mpdf" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
