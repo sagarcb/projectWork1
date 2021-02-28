@@ -32,9 +32,10 @@
                             <div class="form-group col">
                                 <label for="year">Select Year</label>
                                 <select name="year" class="form-control" id="year">
-                                    <option value="2020" selected>2020</option>
-                                    <option value="2019" disabled>2019</option>
-                                    <option value="2018" disabled>2018</option>
+                                    <option value="2020" selected>2021</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
                                 </select>
                             </div>
                             <div class="form-group col">

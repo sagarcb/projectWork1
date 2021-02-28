@@ -118,7 +118,9 @@ class AdminController extends Controller
         $id = session('empid');
         $admin = DB::table('admininfos')->select('deptcode')->where('empid',$id)->get();
         $deptcode = $admin[0]->deptcode;
-        $student = Studentinfo::where('deptcode','like',"$deptcode")->paginate(10);
+        //$student = Studentinfo::where('deptcode','like',"$deptcode")->lat->paginate(10);
+        $student = DB::table('studentinfos')
+            ->where('deptcode','like',"$deptcode")->latest('sid')->paginate(10);
         return view('admin.studentslist')->with('students',$student);
 
     }
@@ -280,7 +282,7 @@ class AdminController extends Controller
         $course = DB::table('courseinfos')
             ->where('id',$id)->first();
         $tid = DB::table('teacherinfos')
-                ->select('tid')->get();
+                ->select('tid')->where('deptcode','=','cse')->get();
         $qsetmcq = DB::table('questionmcqs')
             ->select('qset')->distinct()->get();
         $qsetopen = DB::table('questionopenendeds')
@@ -366,17 +368,17 @@ class AdminController extends Controller
         $deptcode = session('empDeptcode');
         $c =  DB::table('studentcourseregistrations')
                 ->join('studentinfos', 'studentcourseregistrations.sid','like', 'studentinfos.sid')
-                ->where('studentinfos.deptcode',$deptcode)->paginate(10);
+                ->where('studentinfos.deptcode',$deptcode)->latest('id')->paginate(10);
         return view('admin.studentCourseRegistration.studentCourseRegistrationList')->with('courseReg',$c);
 
     }
 
     //Delete a Student Course Registration Form
-    public function destroyStudentCourseRegistration($id)
+    /*public function destroyStudentCourseRegistration($id)
     {
         DB::table('studentcourseregistrations')->where('id', "$id")->delete();
         return redirect('/admin/course-registration-list');
-    }
+    }*/
 
     //Update a Student Course Registration Form
     public function updateStudentCourseRegistration($id,Request $request)
@@ -410,11 +412,11 @@ class AdminController extends Controller
     }
 
     //Deleting an Student info
-    public function destroyStudent($id)
+    /*public function destroyStudent($id)
     {
         DB::table('studentinfos')->where('sid', "$id")->delete();
         return redirect('admin/students')->with('success','Successfully Deleted!!!');
-    }
+    }*/
 
     //Deleting an Teacher Information:
     public function destroyTeacher($id)

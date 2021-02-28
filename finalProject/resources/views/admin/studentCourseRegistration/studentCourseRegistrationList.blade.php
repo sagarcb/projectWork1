@@ -67,11 +67,11 @@
                                                 <a href="{{url("admin/course-registration/$row->id/edit")}}">
                                                     <button type="submit" class="btn btn-primary mr-1">Edit</button>
                                                 </a>
-                                                <form action="{{url("admin/course-registration/$row->id")}}" method="post" onsubmit="return confirm('Are you sure to delete this row?')">
+                                                {{--<form action="{{url("admin/course-registration/$row->id")}}" method="post" onsubmit="return confirm('Are you sure to delete this row?')">
                                                     @csrf
                                                     @method("DELETE")
                                                     <button type="submit" class="btn btn-danger">Delete</button>
-                                                </form>
+                                                </form>--}}
                                             </div>
                                         </td>
                                     </tr>

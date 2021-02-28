@@ -8,6 +8,16 @@
 </head>
 <body>
 @include('teacher.common.navbar')
+<div class="container">
+    @if(\Illuminate\Support\Facades\Session::has('message'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{session('message')}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+</div>
 <div class="container" id="teacher-body">
     <div class="row">
 
@@ -56,11 +66,12 @@
                                     <td>{{$row->semester}}</td>
                                     <td>{{$row->year}}</td>
                                     <td>
-                                        <a href="">
-                                            <button class="btn btn-warning" type="submit">Show Report</button>
+                                        <a href="{{url("/teacher/$row->courseid/report")}}">
+                                            <button class="btn btn-warning evBtn" id="evaluationBtn{{$row->courseid}}" type="submit">Show Report</button>
                                         </a>
                                     </td>
                                 </tr>
+
                              @endforeach
 
                         </tbody>
@@ -80,5 +91,8 @@
 
 <script src="{{url("")}}/js/bootstrap.min.js"></script>
 <script src="{{url("")}}/js/studenthome1.js"></script>
+
 </body>
 </html>
+
+

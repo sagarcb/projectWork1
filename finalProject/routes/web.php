@@ -127,6 +127,11 @@ Route::post('/teacher','TeacherController@authenticate');
 Route::group(['middleware' => 'teacher'],function (){
     Route::get('/teacher','TeacherController@index');
     Route::get('/teacher/logout','TeacherController@logout');
+    Route::get('/teacher/{id}/report','TeacherController@showReport');
+
+    Route::get('/teacher/change-pass','TeacherController@showChangePass');
+    Route::patch('/teacher/{id}/update-pass','TeacherController@updatePass');
+
 });
 
 

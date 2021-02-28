@@ -157,6 +157,6 @@
 {{--Footer Section Ends--}}
 
 <script src="{{url("")}}/js/bootstrap.min.js"></script>
-<script src="{{url("")}}/js/studenthome1.js"></script>
+
 </body>
 </html>

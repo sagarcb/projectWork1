@@ -12,6 +12,9 @@
                             <a class="nav-link" href="{{url('/teacher')}}">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active">
+                            <a class="nav-link" href="{{url('/teacher/change-pass')}}">Change Password <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
                             <a class="nav-link" href="{{url('teacher/logout')}}">Logout</a>
                         </li>
                     </ul>
