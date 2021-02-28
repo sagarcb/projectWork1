@@ -74,7 +74,7 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-                    <table class="table table-bordered">
+                    {{--<table class="table table-bordered">
                         <thead>
                         <tr>
                             <th scope="col">Questions</th>
@@ -93,7 +93,20 @@
                         </tr>
                         @endforeach
                         </tbody>
-                    </table>
+                    </table>--}}
+
+                    <div class="row">
+                        @foreach($openended->unique('qdesopenended') as $row1)
+                                <div class="col-md-12"><h5 class="opQ">{{$row1->qdesopenended}}</h5></div>
+                                @foreach($openended as $row2)
+                                    @if($row2->qdesopenended == $row1->qdesopenended)
+                                        <div class="col-md-12" style="margin-left: 180px">
+                                            <p class="answer text-white">{{$row2->answerdesc}}</p>
+                                        </div>
+                                    @endif
+                                @endforeach
+                        @endforeach
+                    </div>
                 </div>
                 <div class="col-md-1"></div>
             </div>

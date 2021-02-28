@@ -223,7 +223,7 @@
                             <input type="hidden" name="tid" id="tid" value="{{$tid}}">
                             <input type="hidden" name="year" id="year" value="{{$year}}">
                             <input type="hidden" name="semester" id="semester" value="{{$semester}}">
-                            <button class="btn btn-primary" id="submitBtn" type="button">Save To Database</button>
+                            <button class="btn btn-primary" style="display: none;" id="submitBtn" type="button">Save To Database</button>
                         </form>
                     </div>
                 </div>
@@ -264,6 +264,7 @@
                         });
                     })
                 });
+                $('#submitBtn').click();
 
             </script>
 
