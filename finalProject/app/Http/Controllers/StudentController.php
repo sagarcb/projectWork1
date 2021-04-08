@@ -27,7 +27,7 @@ class StudentController extends Controller
 
         $regCourses = DB::table('studentcourseregistrations')
                         ->join('courseinfos','studentcourseregistrations.courseid','=','courseinfos.courseid')
-                        ->join('teacherinfos','courseinfos.teacherinfo_id','=','teacherinfos.tid')
+                        ->leftJoin('teacherinfos','courseinfos.teacherinfo_id','=','teacherinfos.tid')
                         ->where('studentcourseregistrations.sid',$id)->get();
         $deptcode = $student[0]->deptcode;
         $activeSemester = DB::table('active_semesters')->where('dept',$deptcode)->get();
@@ -61,8 +61,6 @@ class StudentController extends Controller
         }else{
             return back()->with('error',"*studentid or password was incorrect");
         }
-
-
     }
 
     //for student logout
@@ -157,6 +155,11 @@ class StudentController extends Controller
             ->update(['evaluationstatus' => 1]);
 
         return redirect('/student');
+    }
+
+    public function showTuitionFeeForm($id)
+    {
+        return view("students.tuitionFee");
     }
 
 }

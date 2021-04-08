@@ -118,6 +118,8 @@ Route::group(['middleware' => 'student'],function () {
         'as' => 'remindHelper', 'uses' => 'StudentController@showQuestionForm']);
     Route::post('/student/question/{cregid}',"StudentController@evaluation");
 
+    Route::get('/student/{id}/tuition-fee','StudentController@showTuitionFeeForm');
+
 });
 
 

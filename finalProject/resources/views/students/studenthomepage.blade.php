@@ -69,11 +69,18 @@
 
                 <div class="row">
                     <div class="col-md-3"><span></span></div>
-                    <div class="col-md-3 col-sm-6 text-center"><span class="text-white">Running Year: 2020</span></div>
-                    <div class="col-md-3 col-sm-6 text-center"><span class="text-white">Running Semester: Summer</span></div>
+                    <div class="col-md-3 col-sm-6 text-center"><span class="text-white">Running Year: {{session('activeYear')}}</span></div>
+                    <div class="col-md-3 col-sm-6 text-center"><span class="text-white">Running Semester: {{session('activeSemester')}}</span></div>
                     <div class="col-md-3"><span></span></div>
                 </div>
 
+                <div class="row mt-3">
+                    <div class="col-md-12 text-center">
+                        <a href="{{url("/student/$student->sid/tuition-fee")}}">
+                            <button class="btn btn-warning" type="submit">Give Tuition Fee</button>
+                        </a>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-md-1"><span></span></div>
@@ -88,6 +95,7 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @if(!empty($regCourses))
                             @foreach($regCourses as $row)
                                 <tr>
                                     <td><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal{{$row->id}}">Evaluate</button></td>
@@ -95,9 +103,11 @@
                                     <td>{{$row->tname}}</td>
                                 </tr>
                             @endforeach
+                            @endif
                             </tbody>
                         </table>
                         {{--Modal Starts--}}
+                        @if(!empty($regCourses))
                         @foreach($regCourses as $row)
                         <div class="row justify-content-center">
 
@@ -137,7 +147,7 @@
 
                         </div>
                         @endforeach
-
+                        @endif
                     </div>
 
                     {{--Modal Ends--}}
